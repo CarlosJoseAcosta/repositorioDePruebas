@@ -33,6 +33,11 @@ public class TiendaPrincipal {
             System.out.println("12. Calcular el dispositivo más caro por categoría");
             System.out.println("13. Calcular el dispositivo más barato por categoría");
             System.out.println("14. Calcular el precio medio de dispositivo por categoría");
+            //Segundo, tercer, cuarto y quinto ejercicio
+            System.out.println("15) Busqueda avanzada donde busca pc que tienen los componenetes dados por usted en una lista");
+            System.out.println("16) Busqueda avanzada donde busca pc que tienen minimo 3 componenetes dados por usted en una lista");
+            System.out.println("17) Busqueda avanzada donde busca pc que no tienen los componenetes dados por usted en una lista");
+            System.out.println("18) busqueda avanzada entre pc que no tienen el hardware indicado y los que si tienen y estan en promocion");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = teclado.nextInt();
