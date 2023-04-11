@@ -29,10 +29,7 @@ public class TiendaPrincipal {
             System.out.println("8. Mostrar los dispositivos hardware de un determinado dispositivo Electrónico.");
             System.out.println("9. Anadir dispositivos a una promoción de un determinado dispositivo electrónico por id");
             System.out.println("10. Quitar dispositivos de una promoción por id, de un determinado PC.");
-            System.out.println("9. Calcular el dispositivo más caro por categoría");
-            System.out.println("10. Calcular el dispositivo más barato por categoría");
             System.out.println("11. Buscar los pc que contengan un determinado componente hardware por modelo del harware");
-            System.out.println("11. media");
             System.out.println("12. Calcular el dispositivo más caro por categoría");
             System.out.println("13. Calcular el dispositivo más barato por categoría");
             System.out.println("14. Calcular el precio medio de dispositivo por categoría");
@@ -170,25 +167,57 @@ public class TiendaPrincipal {
                     }
                     break;
                 case 9:
-
+                    System.out.println("Ponga la id del dispositivo que desea anadir a promociones");
+                    id = teclado.nextLine();
+                    int resultadoPromocion = tienda.anadirPromocion(id);
+                    if (resultadoPromocion == -1) {
+                        System.out.println("El producto ya esta en promocion.");
+                    }else if (resultadoPromocion == 0) {
+                        System.out.println("Ha ocurrido un error.");
+                    }else if (resultadoPromocion == 1) {
+                        System.out.println("El producto se ha insertado en promocion correctamente");
+                    }
                     break;
                 case 10:
-
+                    System.out.println("Ponga la id del producto que desea eliminar: ");
+                    id = teclado.nextLine();
+                    if (tienda.eliminaPromociones(id)) {
+                        System.out.println("Se ha eliminado la promocion con exito");
+                    }else{
+                        System.out.println("No se ha podido encontrar la promocion que se desea eliminar");
+                    }
                     break;
                 case 11:
-
+                    System.out.println("Ponga el modelo del hardware");
+                    modeloHW = teclado.nextLine();
+                    tienda.buscaPCPorHardw(modeloHW);
                     break;
                 case 12:
-
+                    String mayorPrecio = tienda.elMasCaro();
+                    if (mayorPrecio != null) {
+                        System.out.println(mayorPrecio);
+                    }else{
+                        System.out.println("Ha ocurrido un error");
+                    }
                     break;
                 case 13:
-
+                    String menorPrecio = tienda.elMasBarato();
+                    if (menorPrecio != null) {
+                        System.out.println(menorPrecio);
+                    }else{
+                        System.out.println("Ha ocurrido un error");
+                    }
                     break;
                 case 14:
-
+                    String media = tienda.media();
+                    if (media != null) {
+                        System.out.println(media);
+                    }else{
+                        System.out.println("Ha ocurrido un error");
+                    }
                     break;
                 default:
-
+                    System.out.println("Esta opcion no se esperaba, por favor elija otra opcion.");
                     break;
             }
         } while (limite == 0);
