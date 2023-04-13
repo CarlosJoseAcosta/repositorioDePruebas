@@ -237,4 +237,54 @@ public class Tienda {
         }
         return null;
     }
+    
+    public String[] busquedaAvanzadaTodo(String[] listaComponentes){
+        String[] ordenadores = new String[500];
+        ComponenteHardware[] listaHardw;
+        int contador = 0;
+        for (int i = 0; i < dispositivos.length; i++) {
+            if (dispositivos[i] instanceof Ordenador) {
+                listaHardw = ((Ordenador)dispositivos[i]).getHardware();
+                for (int j = 0; j < listaHardw.length; j++) {
+                    for (int k = 0; k < listaComponentes.length; k++) {
+                        if (listaHardw[j] != null && listaComponentes[k] != null && listaComponentes[k].equals(listaHardw[j].getModelo())) {
+                            contador++;
+                        }
+                    }
+                }
+            }
+            if (contador == listaComponentes.length) {
+                ordenadores[i] = dispositivos[i].getNombre();
+            }
+        }
+        if (contador == listaComponentes.length) {
+            return ordenadores;
+        }
+        return null;
+    }
+    
+    public String[] busquedaAvanzadaMin3(String[] listaComponentes){
+    String[] ordenadores = new String[500];
+        ComponenteHardware[] listaHardw;
+        int contador = 0;
+        for (int i = 0; i < dispositivos.length; i++) {
+            if (dispositivos[i] instanceof Ordenador) {
+                listaHardw = ((Ordenador)dispositivos[i]).getHardware();
+                for (int j = 0; j < listaHardw.length; j++) {
+                    for (int k = 0; k < listaComponentes.length; k++) {
+                        if (listaHardw[j] != null && listaComponentes[k] != null && listaComponentes[k].equals(listaHardw[j].getModelo())) {
+                            contador++;
+                        }
+                    }
+                }
+            }
+            if (contador > 3) {
+                ordenadores[i] = dispositivos[i].getNombre();
+            }
+        }
+        if (contador > 3) {
+            return ordenadores;
+        }
+        return null;
+    }
 }
