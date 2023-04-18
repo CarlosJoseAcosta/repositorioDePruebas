@@ -37,7 +37,6 @@ public class TiendaPrincipal {
             System.out.println("15) Busqueda avanzada donde busca pc que tienen los componenetes dados por usted en una lista");
             System.out.println("16) Busqueda avanzada donde busca pc que tienen minimo 3 componenetes dados por usted en una lista");
             System.out.println("17) Busqueda avanzada donde busca pc que no tienen los componenetes dados por usted en una lista");
-            System.out.println("18) busqueda avanzada entre pc que no tienen el hardware indicado y los que si tienen y estan en promocion");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = teclado.nextInt();
@@ -262,16 +261,39 @@ public class TiendaPrincipal {
                     }
                     if (contador >= 3) {
                         ordenadores = tienda.busquedaAvanzadaMin3(listaComponentes);
-                        System.out.println("Los ordenadores que tienen todos estos compo");
+                        System.out.println("Los ordenadores que tienen todos estos componentes");
                         for (int i = 0; i < ordenadores.length; i++) {
                             if (ordenadores[i] != null) {
-                                System.out.println(ordenadores);
+                                System.out.println(ordenadores[i]);
                             }
                         }
                     }else if (contador < 3) {
                         System.out.println("Tiene que poner un minimo de tres componentes para realizar la busqueda avanzada");
                     }
                     break;
+                case 17:
+                    listaComponentes = new String[10];
+                    contador = 0;
+                    for (int i = 0; i < listaComponentes.length; i++) {
+                        System.out.println("Pon el componente del ordenador que desea buscar (Si desea parar no ponga nada):");
+                        modeloHW = teclado.nextLine();
+                        if (modeloHW != "") {
+                            listaComponentes[i] = modeloHW;
+                            contador ++;
+                        }else if (modeloHW == "") {
+                            i = 10;
+                        }
+                    }
+                    if (contador >= 3) {
+                        ordenadores = tienda.busquedaAvanzadaNinguno(listaComponentes);
+                        System.out.println("Los equipos que no tienen ningun equipo");
+                        for (int i = 0; i < ordenadores.length; i++) {
+                            System.out.println(ordenadores[i]);
+                        }
+                    }else if(contador < 3){
+                        System.out.println("Tiene que poner un minimo de 3 componentes para realizar la busqueda avanzada");
+                    }
+                break;
                 default:
                     System.out.println("Esta opcion no se esperaba, por favor elija otra opcion.");
                     break;
